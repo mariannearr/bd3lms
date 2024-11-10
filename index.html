@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>Interpolating Autoregressive and Discrete Denoising Diffusion Language Models</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -43,59 +43,45 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 </head>
 <body>
-
 
   <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">Interpolating Autoregressive and Discrete Denoising Diffusion Language Models</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <a href="https://mariannearriola.github.io/" target="_blank">Marianne Arriola</a><sup>1</sup>,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <a href="https://skylion007.github.io/" target="_blank">Aaron Gokaslan</a><sup>1</sup>,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                    <a href="https://s-sahoo.com/" target="_blank">Subham Sahoo</a><sup>1</sup>,</span>
+                    <span class="author-block">
+                      <a href="https://justinchiu.netlify.app/" target="_blank">Justin Chiu</a><sup>1</sup>,</span>
+                      <span class="author-block">
+                        <a href="https://zhihanyang2022.github.io/" target="_blank">Zhihan Yang</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                          <a href="https://zhixuanqi.com/" target="_blank">Zhixuan Qi</a><sup>1</sup>,</span>
+                          <span class="author-block">
+                            <a href="https://hanjq17.github.io/" target="_blank">Jiaqi Han</a><sup>2</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://www.cs.cornell.edu/~kuleshov/" target="_blank">Volodymyr Kuleshov</a><sup>1</sup>
                   </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block">Institution Name<br>Conferance name and year</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                    <span class="author-block"><sup>1</sup>Cornell&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="author-block"><sup>2</sup>Stanford</span>
                   </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    <a href="https://github.com/mariannearriola/text-diffusion" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -114,6 +100,17 @@
                   <span>arXiv</span>
                 </a>
               </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/<MODEL_PATH>" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <img src="static/images/hf.png" alt="Hugging Face" style="width: 20px; height: 20px; vertical-align: middle;">
+                  </span>
+                  <span>HuggingFace</span>
+                </a>
+              </span>
+              
+              
             </div>
           </div>
         </div>
@@ -127,15 +124,30 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
+
       <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
+        Autoregressive decoding: 
+        <span style="color: green; font-weight: bold;">&#10004; High quality</span> 
+        <span style="color: green; font-weight: bold;">&#10004; Arbitrary lengths</span>
+        <span style="color: red; font-weight: bold;">&#10060; Not parallelizable</span> 
       </h2>
-    </div>
+      <img src="static/images/text_ar.gif" style="padding-bottom: 40px;">
+
+      <h2 class="subtitle has-text-centered">
+        Diffusion decoding: 
+        <span style="color: red; font-weight: bold;">&#10060; Lower quality</span> 
+        <span style="color: red; font-weight: bold;">&#10060; Fixed length</span> 
+        <span style="color: green; font-weight: bold;">&#10004; Parallelizable</span> 
+      </h2>
+      <img src="static/images/text_mdlm.gif" style="padding-bottom: 40px;">
+      <h2 class="subtitle has-text-centered" style="padding-top: 20px;">
+        Block-autoregressive diffusion decoding: 
+        <span style="color: green; font-weight: bold;">&#10004; High quality</span> 
+        <span style="color: green; font-weight: bold;">&#10004; Arbitrary lengths</span> 
+        <span style="color: green; font-weight: bold;">&#10004; Parallelizable</span> 
+      </h2>
+      <img src="static/images/text_sar.gif">
+      </div>
   </div>
 </section>
 <!-- End teaser video -->
@@ -148,7 +160,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+            Diffusion language models offer unique benefits over autoregressive (AR) models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of semi-autoregressive (SAR) diffusion models that interpolate between discrete denoising diffusion and autoregressive models. We propose a recipe for building effective SAR models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. SAR models overcome key limitations of diffusion language models, setting a new state-of-the-art performance on language modeling benchmarks and enabling generation of arbitrary-length sequences.
           </p>
         </div>
       </div>
@@ -157,128 +169,540 @@
 </section>
 <!-- End paper abstract -->
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+<!-- AR VS DIFFUSION -->
+<section class="section" id="SEC1">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Autoregressive vs. Diffusion Language Models</h2>
+      <p>
+        In the language modeling task, we have a sequence of \( L \) tokens \( \mathbf{x} = (x^1, \dots, x^L ) \) drawn from the data distribution \( q(\mathbf{x}) \). We aim to fit a model \( p_\theta(\mathbf{x}) \) of \( q \).
+      </p>
+        Autoregressive models define a factorized distribution of the form:
+      </p>
+      <p>
+        \[ \log p_\theta(\mathbf{x}) = \sum_{i=1}^L \log p_\theta(\mathbf{x}^i \mid \mathbf{x}^{\lt i}) \]
+      </p>
+      <p>However, the sequential dependencies between tokens require that AR sampling is restricted to \( L \) sampling steps, which may be slow for long sequences.</p>
+      <p>Diffusion models overcome this limitation by modeling tokens independently, admitting parallel generation. Diffusion models instead fit a model to undo a forward corruption process \( q(\mathbf{x}_t | \mathbf{x}_{t-1}) = \text{Cat}(\mathbf{x_t} ; Q_t \mathbf{x}_{t-1} ) \) using transition matrices \( Q_t \). D3PM (<a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>) defines this as</p>
+      <p>
+        \[ p_\theta(\mathbf{x}_s | \mathbf{x}_t) = \sum_{\mathbf{x}} q(\mathbf{x}_s | \mathbf{x}_t, \mathbf{x}) p_\theta(\mathbf{x} | \mathbf{x}_t)   \]
+      </p>
+      <p>where the denoising base model \( p_\theta(\mathbf{x} | \mathbf{x}_t) \) predicts clean tokens \( \mathbf{x} \) given noised tokens \( \mathbf{x}_t \). However, the diffusion objective minimizes a bound on the likelihood. As a result, diffusion models lag in terms of likelihood and sample quality. Furthermore, diffusion models are restricted to generate fixed length sequences.</p>
     </div>
   </div>
-</div>
-</div>
 </section>
-<!-- End image carousel -->
 
+<!-- SAD3LMS -->
+<style>
+  .hero-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
+        .figure-caption-container {
+            display: flex;
+            flex-direction: column; /* Captions and figure container are in a vertical stack */
+            align-items: center;
+            gap: 20px; /* Spacing between figure and color captions */
+        }
 
+        .figure-content-container {
+            display: flex;
+            flex-direction: row; /* Figure and color boxes are side by side */
+            align-items: center;
+            gap: 20px;
+        }
 
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
+        .figure-container {
+            flex-shrink: 0; /* Prevents figure from shrinking */
+        }
+
+        .captions {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .caption {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+  .color-box {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+      vertical-align: middle;
+  }
+  .orange { background-color: #ff9900; }
+  .light-orange { background-color: #FFDAB9; }
+  .blue { background-color: #30beee; }
+  .dark-green { background-color: #006400; }
+  .green { background-color: #228B22; }
+  .light-green { background-color: #90EE90; }
+</style>
+
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">SAD3-LMs: Semi-Autoregressive Denoising Discrete Diffusion Language Models</h2>
+      <p>We combine modeling paradigms to enjoy better likelihoods & flexible-length generation from autoregressive models, as well as fast & parallel generation from diffusion models.</p> 
+      <h4 class="subtitle">Semi-autoregressive likelihood</h4>
+      <p>We propose a modeling framework that autoregressively models blocks of tokens and performs diffusion within each block. Our likelihood factorizes over \( B \) blocks of length \( L' \) as</p>
+      <p>
+        \[ \log p_\theta (\mathbf{x}) = \sum_{b=1}^B \log p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \]
+      </p>
+      <p>Each \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) is modeled using discrete diffusion ELBO over a block of \( L' \) tokens. We obtain a principled learning objective \( \mathcal{L}_\text{SAR}(\mathbf{x}, \theta) \) by optimizing the following likelihood bound:</p>
+      <p>
+        \[ \log p_\theta(\mathbf{x}) \geq \mathcal{L}_\text{SAR}(\mathbf{x}, \theta) := \sum_{b=1}^{B} \mathcal{L}(\mathbf{x}^b, \mathbf{x}^{\lt b}, \theta), \]
+      </p>
+      We model the per-block likelihood under a simple discrete diffusion parameterization (<a href="https://arxiv.org/abs/2406.07524">Sahoo et. al</a>, <a href="https://arxiv.org/abs/2406.04329">Shi et. al</a>, <a href="https://arxiv.org/abs/2406.03736">Ou et. al</a>). Our final objective becomes a sum of weighted cross-entropy terms:
+      <p>
+        \[ \mathcal{L}_\text{SAR}(\mathbf{x}, \theta) :=  \sum_{b=1}^{B} \mathbb{E}_{t_b \sim (0, 1]} \mathbb{E}_{q} \frac{1}{t_b} \log p_\theta(\mathbf{x}^b | \mathbf{x}_{t_b}^b, \mathbf{x}^{\lt b}) \]
+      </p>
+      <h4 class="subtitle">Efficient training using a custom attention algorithm</h4>
+      <p> Ideally, we wish to model all conditional terms \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) for \( B \) blocks in one forward pass of the model \( \mathbf{x}_\theta \). However, observe that denoising \( \mathbf{x}_t^b \) requires a forward pass on this noisy input, while denoising the next block requires running the model \( \mathbf{x}_\theta \) on the clean version \( \mathbf{x}^b \).</p>
+      <p>We propose to efficiently model all \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) in a vectorized fashion by proposing a custom attention mask. This mask ensures that each conditional term is modeled using a special attention pattern, where each token in \( \mathbf{x}^b \) self-attends to the noised block and cross-attends to the clean context \( \mathbf{x}^{\lt b} \). We update \( \mathbf{x}^{\lt b} \) needed for this cross-attention using block-causal attention. </p>
+      <section class="hero is-small">
+        <div class="hero-body">
+            <div class="figure-caption-container">
+                <!-- Figure Caption Above the Figure and Color-Coded Labels -->
+                <!-- Container for figure and color-coded captions next to each other -->
+                <div class="figure-caption">
+                  <i>Custom attention mask to model \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) for \( B \) blocks in one forward pass.</i>
+              </div>
+                <div class="figure-content-container">
+                    <div class="figure-container">
+                        <!-- Figure/Image -->
+                        <img src="static/images/mask.png" alt="mask" style="width: 400px;">
+                    </div>
+                    <div class="captions">
+                        <!-- Labels/Captions to the right of the figure -->
+                        <div class="caption">
+                            <div class="color-box orange"></div>
+                            <span>Self-attention mask within noised blocks \( \mathbf{x}_t^b \)</span>
+                        </div>
+                        <div class="caption">
+                            <div class="color-box blue"></div>
+                            <span>Cross-attention mask for conditional context \( \mathbf{x}^{\lt b} \)</span>
+                        </div>
+                        <div class="caption">
+                            <div class="color-box dark-green"></div>
+                            <span>Block-causal attention mask to update \( \mathbf{x} \)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    </div>
+  </div>
+</section>
+
+<!-- GAP -->
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Understanding Likelihood Gaps Between Diffusion and AR Models</h2>
+      <h4 class="subtitle">Case Study: Single Token Generation</h4>
+      <p>Our SAR parameterization is equivalent in expectation to the autoregressive NLL in the limiting case where \( L'=1 \). Surprisingly, we find a two point perplexity gap between our SAR model for \( L'=1 \) and AR when training both models on the LM1B dataset. We identify high training variance of the diffusion objective as responsible for the perplexity gap.</p>
+      <section class="hero is-small">
+        <div class="hero-body">
+        <img src="static/images/bs1.png" alt="mask" style="width:70%">
+        <div class="figure-caption">
+          <i>Training under the discrete diffusion ELBO suffers from high variance.</i>
+      </div>
+        </div>
+      </section>
+      <h4 class="subtitle">Diffusion Gap from High Variance Training</h4>
+        <p>Intuitively, if the sampled masking rate \( t \sim \mathcal{U}[0, 1] \) is too low, reconstructing \( \mathbf{x} \) is easy, which does not provide a useful learning signal. If we mask everything, the optimal reconstruction are the marginals of each token in the data distribution, which is easy to learn, and again not useful.</p>
+
+        <p>Formally, the variance of the gradient estimator \( \text{Var}_{\mathbf{X}, t} \left[ \nabla_\theta \mathcal{L}_ {\text{SAR}} \right] \) is high due to variance in the diffusion objective. We derive the following estimator:</p>
+        <p>
+          \[ \text{Var}_{\mathbf{X}, t}\left[\nabla_\theta \mathcal{L}_{\text{SAR}} (\mathbf{X}) \right] \approx  \frac{1}{M-1} \sum_{m=1}^M \left\lVert  \nabla_\theta \mathcal{L}_{\text{SAR}} (\mathbf{X}^m) - \frac{1}{M} \sum_{m=1}^M \nabla_\theta \mathcal{L}_{\text{SAR}}(\mathbf{X}^m)\right\rVert^2_2, \]
+        </p>
+        We use our estimator to find noise schedules that minimize training variance and further reduce the perplexity gap.</p>
+      </div>
+  </div>
+</section>
+
+<!-- CLIPPED SCHEDULES -->
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Data-Driven Clipped Schedules for Low-Variance Gradients</h2>
+      <p>To avoid masking rates that cause high-variance training, we train SAD3-LMs under "clipped" masking rates \( t \sim \mathcal{U}[\beta, \omega] \) for \( 0 \leq \beta, \omega \leq 1 \). By reducing the training variance, we improve likelihoods when we evaluate under uniformly sampled mask rates.</p>
+
+      <p>As the optimal mask rates may differ depending on the block size \(L'\), we adaptively learn \( \beta, \omega \) during training. In practice, we do so using a grid search during every validation step, after 5K gradient updates, to optimize \(\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}_{\text{SAR}}(\theta, \beta, \omega; \mathbf{X}) \right] \). </p>
+      
+      <p>Below, we show that optimizing the noise schedule per block size reduces the variance of the loss estimator and achieves the best perplexities compared to alternative schedules.</p>
+    </div>
+
+    <table style="width: 70%; margin: 20px auto; border-collapse: collapse; font-size: 19px; text-align: center;">
+      <div class="figure-caption">
+        <center>
+        <i style="font-size: 19px;">Test perplexities (PPL; ↓) of models trained for 1M steps on LM1B. Best diffusion value is bolded.</i>
+        </center>
+      </div>
+      <tr>
+          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">SAD3-LMs</th>
+          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Noise schedule</th>
+          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">PPL</th>
+          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Var. ELBO</th>
+      </tr>
+  
+      <!-- Multi-row for L' = 4 -->
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold; vertical-align: middle;" rowspan="4">L' = 4</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">Linear <em>t</em> ~ <em>U</em>[0, 1]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">30.18</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">23.45</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Clipped <em>t</em> ~ <em>U</em>[0.45, 0.95]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">29.21</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">6.24</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">Clipped <em>t</em> ~ <em>U</em>[0.3, 0.8]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">29.38</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">10.33</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 2px solid #ddd;">Logarithmic</td>
+          <td style="padding: 6px 10px; border-bottom: 2px solid #ddd;">30.36</td>
+          <td style="padding: 6px 10px; border-bottom: 2px solid #ddd;">23.53</td>
+      </tr>
+  
+      <!-- Multi-row for L' = 16 -->
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: none; font-weight: bold; vertical-align: middle;" rowspan="4">L' = 16</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">Linear <em>t</em> ~ <em>U</em>[0, 1]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">31.72</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">7.62</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">Clipped <em>t</em> ~ <em>U</em>[0.45, 0.95]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">31.42</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd;">3.60</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">Clipped linear <em>t</em> ~ <em>U</em>[0.3, 0.8]</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">31.12</td>
+          <td style="padding: 6px 10px; border-bottom: 1px solid #ddd; font-weight: bold;">3.58</td>
+      </tr>
+      <tr>
+          <td style="padding: 6px 10px; border-bottom: none;">Cosine</td>
+          <td style="padding: 6px 10px; border-bottom: none;">31.41</td>
+          <td style="padding: 6px 10px; border-bottom: none;">13.00</td>
+      </tr>
+  </table>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Results</h2>
+      <h4 class="subtitle">Likelihood Evaluation</h4>
+      <p>SAD3-LMs achieve state-of-the-art likelihoods among diffusion models. As shown below, SAD3-LMs interpolate between diffusion and autoregressive likelihoods by tuning the block length \( L' \). </p>
+      <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        th, td {
+          padding: 8px;
+          text-align: left;
+        }
+        /* Top border for category headers, without bottom border */
+        tr.category-row td {
+          border-top: 2px solid #000;
+          border-bottom: none;
+        }
+        /* Bold top border for the Semi-autoregressive section */
+        tr.semi-autoregressive-row td {
+          border-top: 2px solid #000; /* Bold border */
+          border-bottom: none;
+        }
+        /* Remove bottom borders for grouped models */
+        tr.grouped-models td {
+          border-bottom: none;
+        }
+        /* Light bottom border specifically for the last row in Semi-autoregressive */
+        tr.final-row td {
+          border-bottom: 2px solid #000; /* Light border */
+        }
+        /* Make SAD3-LMs invisible */
+        .invisible {
+          visibility: hidden; /* Makes text invisible but preserves space */
+        }
+      </style>
+      
+      <table>
+        <div class="figure-caption">
+          <center>
+          <i>Test perplexities (PPL; ↓) of models trained for 1M steps on LM1B. Best diffusion value is bolded.</i>
+          </center>
+        </div>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Model</th>
+            <th>Parameters</th>
+            <th>PPL (↓)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Autoregressive models -->
+          <tr class="category-row">
+            <td><em>Autoregressive</em></td>
+            <td>Transformer-X Base</td>
+            <td>0.46B</td>
+            <td>23.5</td>
+          </tr>
+          <tr class="grouped-models">
+            <td></td>
+            <td>Transformer</td>
+            <td>110M</td>
+            <td>22.83</td>
+          </tr>
           
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
+          <!-- Diffusion models -->
+          <tr class="category-row">
+            <td><em>Diffusion</em></td>
+            <td>D3PM (absorb)</td>
+            <td>70M</td>
+            <td>&le;82.34</td>
+          </tr>
+          <tr class="grouped-models">
+            <td></td>
+            <td>SEDD</td>
+            <td>110M</td>
+            <td>&le;32.71</td>
+          </tr>
+          <tr class="grouped-models">
+            <td></td>
+            <td>MDLM</td>
+            <td>110M</td>
+            <td>&le;32.03</td>
+          </tr>
+          
+          <!-- Semi-autoregressive models with bold top border -->
+          <tr class="semi-autoregressive-row">
+            <td><em>Semi-autoregressive (Ours)</em></td>
+            <td><strong>SAD3-LMs</strong> L' = 16</td>
+            <td>110M</td>
+            <td>&le;30.67</td>
+          </tr>
+          <tr class="grouped-models">
+            <td></td>
+            <td><span class="invisible">SAD3-LMs</span> L' = 8</td>
+            <td>110M</td>
+            <td>&le;29.99</td>
+          </tr>
+          <tr class="final-row">
+            <td></td>
+            <td><span class="invisible">SAD3-LMs</span> L' = 4</td>
+            <td>110M</td>
+            <td>&le;<strong>28.33</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      
+      <h4 class="subtitle">Arbitrary-length sequence generation</h4>
+      <p>One key drawback of many existing diffusion language models is that they cannot generate full-length documents that are longer than the length of the output context chosen at training time. For example, OpenWebText contains documents up to 131K tokens, whereas discrete diffusion model SEDD (<a href="https://arxiv.org/abs/2310.16834">Lou et. al</a>) is restricted to generate 1024 tokens. Below, we show that SAD3-LMs can generate variable-length documents by decoding an arbitrary number of blocks.</p>
+      
+      <table>
+        <div class="figure-caption">
+        <center>
+          <i>Generation length statistics from sampling 2K documents from models trained on OWT. For diffusion models, we use T=1K diffusion steps.</i>
+        </center>
       </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Median # tokens</th>
+            <th>Max # tokens</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>OWT train set</td>
+            <td>717</td>
+            <td>131K</td>
+          </tr>
+          <tr>
+            <td>AR</td>
+            <td>2053</td>
+            <td>2895</td>
+          </tr>
+          <tr>
+            <td>SEDD</td>
+            <td>1013</td>
+            <td>1024</td>
+          </tr>
+          <tr>
+            <td>SAD3-LM L'=16</td>
+            <td>850</td>
+            <td>7328</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+      <p>We also compare with SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>), an alternative semi-autoregressive formulation that performs Gaussian diffusion over word embeddings, as in other works such as Diffusion-LM (<a href="https://arxiv.org/abs/2205.14217">Li et. al</a>). Our approach instead applies discrete noise and can be seen as the analogous extension of <a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>. Unlike SAD3-LMs, SSD-LM does not support likelihood estimation. Thus, to compare the models, we generated unconditionally sequences of lengths 1024 and 2048. Our discrete approach yields samples with improved generative perplexity using an order magnitude fewer generation steps.</p>
         
+      <p>We further compare with the semi-autoregressive decoding strategy in MDLM (<a href="https://arxiv.org/abs/2406.07524">Sahoo et. al</a>), which doesn't feature semi-autoregressive training. Whereas the perplexity worsens in generating longer sequences using MDLM, our combined training and sampling procedure maintains quality.</p>
+      <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center; /* Center align all table entries */
+            vertical-align: middle;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+    <table style="border-collapse: collapse; width: 100%;">
+      <div class="figure-caption">
+        <center>
+          <i>Generative perplexity (Gen. PPL; ↓) of 50 variable-length samples. All models are trained on OWT with a context length L = 1024 and use nucleus sampling.</i>
+        </center>
       </div>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Model</th>
+          <th colspan="2"><center>L = 1024</center></th>
+          <th colspan="2"><center>L = 2048</center></th>
+        </tr>
+        <tr>
+          <th style="padding: 8px;"></th>
+          <th style="padding: 8px;"></th>
+          <th>Gen. PPL (↓)</th>
+          <th>NFEs</th>
+          <th>Gen. PPL (↓)</th>
+          <th>NFEs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Autoregressive Section -->
+        <tr>
+          <td style="border-bottom: 2px solid black; text-align: left; padding: 8px;"><i>Autoregressive</i></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;">AR</td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>14.1</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>16.5</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
+        </tr>
+    
+        <!-- Diffusion Section -->
+        <tr>
+          <td style="border-bottom: 2px solid black; text-align: left; padding: 8px;" rowspan="2"><i>Diffusion</i></td>
+          <td style="padding: 8px;">SEDD</td>
+          <td style="padding: 8px;"><center>44.8</center></td>
+          <td style="padding: 8px;"><center>1K</center></td>
+          <td style="padding: 8px;"><center>-</center></td>
+          <td style="padding: 8px;"><center>-</center></td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 2px solid black; padding: 8px;">MDLM</td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>44.6</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>47.5</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
+        </tr>
+        
+        <!-- Semi-autoregressive Section -->
+        <tr>
+          <td style="border-bottom: none; text-align: left; padding: 8px;" rowspan="5"><i>Semi-autoregressive</i></td>
+          <td style="border-bottom: none; padding: 8px;">SSD-LM L' = 25</td>
+          <td style="border-bottom: none; padding: 8px;"><center>36.9</center></td>
+          <td style="border-bottom: none; padding: 8px;"><center>40K</center></td>
+          <td style="border-bottom: none; padding: 8px;"><center>36.8</center></td>
+          <td style="border-bottom: none; padding: 8px;"><center>80K</center></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;"></td>
+          <td style="border-top: none; padding: 8px;"><center>309.8</center></td>
+          <td style="border-top: none; padding: 8px;"><center>1K</center></td>
+          <td style="border-top: none; padding: 8px;"><center>296.3</center></td>
+          <td style="border-top: none; padding: 8px;"><center>2K</center></td>
+        </tr>
+        <tr>
+          <td style="border-top: 1px solid #000000; padding: 8px;border-bottom: none;"><strong>SAD3-LMs</strong> L' = 16</td>
+          <td style="padding: 8px;border-bottom: none;"><center>42.8</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>43.0</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;border-bottom: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L' = 8</td>
+          <td style="padding: 8px;border-bottom: none;"><center>39.0</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>40.6</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;" class="highlight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L' = 4</td>
+          <td style="padding: 8px;" class="highlight"><center><strong>28.6</strong></center></td>
+          <td style="padding: 8px;"><center>1K</center></td>
+          <td style="padding: 8px;" class="highlight"><center><strong>28.2</strong></center></td>
+          <td style="padding: 8px;"><center>2K</center></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    
+    
+    
     </div>
-  </section>
-<!--End paper poster -->
+  </div>
+</section>
+
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Conclusion</h2>
+      Our work explores semi-autoregressive diffusion and is motivated by two problems with existing discrete diffusion: the need to generate arbitrary-length sequences and the perplexity gap to discrete models. We present SAD3-LMs, which represent a semi-autoregressive extension of the D3PM framework (<a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>), and leverage a specialized training algorithm and custom noise schedules that further improve performance. We observe that in addition to being able to generate long-form documents, these models also improve perplexity, setting a new state-of-the-art among discrete diffusion models.
+    </div>
+  </div>
+</section>
+
+
+
 
 
 <!--BibTex citation -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>
+        @article{arriola2024sad3lm,
+          title={Interpolating Autoregressive and Discrete Denoising Diffusion Language Models},
+          author={Arriola, Marianne and Gokaslan, Aaron and Sahoo, Subham Sekhar and Chiu, Justin and Yang, Zhihan and Qi, Xhixuan and Han, Jiaqi and Kuleshov, Volodymyr},
+          journal={arXiv},
+          year={2024}
+        }
+      </code></pre>
     </div>
 </section>
 <!--End BibTex citation -->
