@@ -559,7 +559,6 @@
       
       <p>We also compare with SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>), an alternative semi-autoregressive formulation that performs Gaussian diffusion over word embeddings, as in other works such as Diffusion-LM (<a href="https://arxiv.org/abs/2205.14217">Li et. al</a>). Our approach instead applies discrete noise and can be seen as the analogous extension of <a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>. Unlike SAD3-LMs, SSD-LM does not support likelihood estimation. Thus, to compare the models, we generated unconditionally sequences of lengths 1024 and 2048. Our discrete approach yields samples with improved generative perplexity using an order magnitude fewer generation steps.</p>
         
-      <p>We further compare with the semi-autoregressive decoding strategy in MDLM (<a href="https://arxiv.org/abs/2406.07524">Sahoo et. al</a>), which doesn't feature semi-autoregressive training. Whereas the perplexity worsens in generating longer sequences using MDLM, our combined training and sampling procedure maintains quality.</p>
       <style>
         table {
             width: 100%;
@@ -625,9 +624,9 @@
         </tr>
         <tr>
           <td style="border-bottom: 2px solid black; padding: 8px;">MDLM</td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>44.6</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>44.2</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>47.5</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>44.4</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
         
