@@ -14,13 +14,13 @@
   <meta property="og:image:height" content="630"/>
 
 
-  <meta name="twitter:title" content="BAM-DLMs">
-  <meta name="twitter:description" content="BAM-DLMs">
+  <meta name="twitter:title" content="BD3-LMs">
+  <meta name="twitter:description" content="BD3-LMs">
   <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
   <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="block-autoregressive, discrete, masked, diffusion, language models, BAM-DLM, BAM-DLMs">
+  <meta name="keywords" content="block diffusion, discrete, masked, diffusion, language models, BAM-DLM, BD3-LMs">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -96,7 +96,7 @@
 
                   <!-- Github link -->
                   <span class="link-block">
-                    <a href="https://github.com/kuleshov-group/bam-dlms" target="_blank"
+                    <a href="https://github.com/kuleshov-group/BD3-LMs" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -106,7 +106,7 @@
                 </span>
                 
                 <span class="link-block">
-                  <a href="https://huggingface.co/collections/kuleshov-group/bam-dlms-67be95f81b96b15fec50d53f" target="_blank"
+                  <a href="https://huggingface.co/collections/kuleshov-group/BD3-LMs-67be95f81b96b15fec50d53f" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <img src="static/images/hf.png" alt="Hugging Face" style="width: 20px; height: 20px; vertical-align: middle;">
@@ -167,7 +167,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Diffusion language models offer unique benefits over autoregressive (AR) models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block-autoregressive (BAR) diffusion models that interpolate between discrete denoising diffusion and autoregressive models. We propose a recipe for building effective BAR models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. BAR models overcome key limitations of diffusion language models, setting a new state-of-the-art performance on language modeling benchmarks and enabling generation of arbitrary-length sequences.
+            Diffusion language models offer unique benefits over autoregressive (AR) models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block diffusion (BD) diffusion models that interpolate between discrete denoising diffusion and autoregressive models. We propose a recipe for building effective block diffusion models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. Block diffusion overcomes key limitations of diffusion language models, setting a new state-of-the-art performance on language modeling benchmarks and enabling generation of arbitrary-length sequences.
           </p>
         </div>
       </div>
@@ -199,7 +199,7 @@
   </div>
 </section>
 
-<!-- BAM-DLMs -->
+<!-- BD3-LMs -->
 <style>
       /* .link-block {
           display: inline-block;
@@ -330,20 +330,20 @@
 <section class="section" id="SEC2">
   <div class="container is-max-desktop">
     <div class="content is-medium">
-      <h2 class="title">BAM-DLMs: Block Autoregressive Masked Diffusion Language Models</h2>
+      <h2 class="title">BD3-LMs: Block Discrete Denoising Diffusion Language Models</h2>
       <p>We combine modeling paradigms to enjoy better likelihoods & flexible-length generation from autoregressive models, as well as fast & parallel generation from diffusion models.</p> 
-      <h4 class="subtitle">Block-autoregressive likelihood</h4>
+      <h4 class="subtitle">Block diffusion likelihood</h4>
       <p>We propose a modeling framework that autoregressively models blocks of tokens and performs diffusion within each block. Our likelihood factorizes over \( B \) blocks of length \( L' \) as</p>
       <p>
         \[ \log p_\theta (\mathbf{x}) = \sum_{b=1}^B \log p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \]
       </p>
-      <p>Each \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) is modeled using discrete diffusion ELBO over a block of \( L' \) tokens. We obtain a principled learning objective \( \mathcal{L}_\text{BAR}(\mathbf{x}, \theta) \) by optimizing the following likelihood bound:</p>
+      <p>Each \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) is modeled using discrete diffusion ELBO over a block of \( L' \) tokens. We obtain a principled learning objective \( \mathcal{L}_\text{BD}(\mathbf{x}, \theta) \) by optimizing the following likelihood bound:</p>
       <p>
-        \[ \log p_\theta(\mathbf{x}) \geq \mathcal{L}_\text{BAR}(\mathbf{x}, \theta) := \sum_{b=1}^{B} \mathcal{L}(\mathbf{x}^b, \mathbf{x}^{\lt b}, \theta), \]
+        \[ \log p_\theta(\mathbf{x}) \geq \mathcal{L}_\text{BD}(\mathbf{x}, \theta) := \sum_{b=1}^{B} \mathcal{L}(\mathbf{x}^b, \mathbf{x}^{\lt b}, \theta), \]
       </p>
       We model the per-block likelihood under a simple discrete diffusion parameterization (<a href="https://arxiv.org/abs/2406.07524">Sahoo et. al</a>, <a href="https://arxiv.org/abs/2406.04329">Shi et. al</a>, <a href="https://arxiv.org/abs/2406.03736">Ou et. al</a>). Our final objective becomes a sum of weighted cross-entropy terms:
       <p>
-        \[ \mathcal{L}_\text{BAR}(\mathbf{x}, \theta) :=  \sum_{b=1}^{B} \mathbb{E}_{t_b \sim (0, 1]} \mathbb{E}_{q} \frac{1}{t_b} \log p_\theta(\mathbf{x}^b | \mathbf{x}_{t_b}^b, \mathbf{x}^{\lt b}) \]
+        \[ \mathcal{L}_\text{BD}(\mathbf{x}, \theta) :=  \sum_{b=1}^{B} \mathbb{E}_{t_b \sim (0, 1]} \mathbb{E}_{q} \frac{1}{t_b} \log p_\theta(\mathbf{x}^b | \mathbf{x}_{t_b}^b, \mathbf{x}^{\lt b}) \]
       </p>
       <h4 class="subtitle">Efficient training using a custom attention algorithm</h4>
       <p> Ideally, we wish to model all conditional terms \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) for \( B \) blocks in one forward pass of the model \( \mathbf{x}_\theta \). However, observe that denoising \( \mathbf{x}_t^b \) requires a forward pass on this noisy input, while denoising the next block requires running the model \( \mathbf{x}_\theta \) on the clean version \( \mathbf{x}^b \).</p>
@@ -391,7 +391,7 @@
     <div class="content is-medium">
       <h2 class="title">Understanding Likelihood Gaps Between Diffusion and AR Models</h2>
       <h4 class="subtitle">Case Study: Single Token Generation</h4>
-      <p>Our BAR parameterization is equivalent in expectation to the autoregressive NLL in the limiting case where \( L'=1 \). Surprisingly, we find a two point perplexity gap between our BAR model for \( L'=1 \) and AR when training both models on the LM1B dataset. We identify high training variance of the diffusion objective as responsible for the perplexity gap.</p>
+      <p>Our block diffusion parameterization is equivalent in expectation to the autoregressive NLL in the limiting case where \( L'=1 \). Surprisingly, we find a two point perplexity gap between our block diffusion model for \( L'=1 \) and AR when training both models on the LM1B dataset. We identify high training variance of the diffusion objective as responsible for the perplexity gap.</p>
       <section class="hero is-small">
         <div class="hero-body">
         <img src="static/images/bs1.png" alt="mask" style="width:80%; padding-bottom: 10px;">
@@ -412,9 +412,9 @@
   <div class="container is-max-desktop content">
     <div class="content is-medium">
       <h2 class="title">Data-Driven Clipped Schedules for Low-Variance Gradients</h2>
-      <p>To avoid masking rates that cause high-variance training, we train BAM-DLMs under "clipped" masking rates \( t \sim \mathcal{U}[\beta, \omega] \) for \( 0 \leq \beta, \omega \leq 1 \). By reducing the training variance, we improve likelihoods when we evaluate under uniformly sampled mask rates.</p>
+      <p>To avoid masking rates that cause high-variance training, we train BD3-LMs under "clipped" masking rates \( t \sim \mathcal{U}[\beta, \omega] \) for \( 0 \leq \beta, \omega \leq 1 \). By reducing the training variance, we improve likelihoods when we evaluate under uniformly sampled mask rates.</p>
 
-      <p>As the optimal mask rates may differ depending on the block size \(L'\), we adaptively learn \( \beta, \omega \) during training. In practice, we do so using a grid search during every validation step, after 5K gradient updates, to optimize \(\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}_{\text{BAR}}(\theta, \beta, \omega; \mathbf{X}) \right] \). </p>
+      <p>As the optimal mask rates may differ depending on the block size \(L'\), we adaptively learn \( \beta, \omega \) during training. In practice, we do so using a grid search during every validation step, after 5K gradient updates, to optimize \(\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}_{\text{BD}}(\theta, \beta, \omega; \mathbf{X}) \right] \). </p>
       
       <p>Below, we show that optimizing the noise schedule per block size reduces the variance of the loss estimator and achieves the best perplexities compared to alternative schedules.</p>
     </div>
@@ -426,7 +426,7 @@
         </center>
       </div>
       <tr>
-          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">BAM-DLMs</th>
+          <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">BD3-LMs</th>
           <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Noise schedule</th>
           <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">PPL</th>
           <th style="padding: 6px 10px; border-bottom: 1px solid #ddd; background-color: #f2f2f2;">Var. ELBO</th>
@@ -487,7 +487,7 @@
     <div class="content is-medium">
       <h2 class="title">Results</h2>
       <h4 class="subtitle">Likelihood Evaluation</h4>
-      <p>BAM-DLMs achieve state-of-the-art likelihoods among diffusion models. As shown below, BAM-DLMs interpolate between diffusion and autoregressive likelihoods by tuning the block length \( L' \). </p>
+      <p>BD3-LMs achieve state-of-the-art likelihoods among diffusion models. As shown below, BD3-LMs interpolate between diffusion and autoregressive likelihoods by tuning the block length \( L' \). </p>
       <style>
         img {
           width: 80%;
@@ -505,8 +505,8 @@
           border-top: 2px solid #000;
           border-bottom: none;
         }
-        /* Bold top border for the block-autoregressive section */
-        tr.block-autoregressive-row td {
+        /* Bold top border for the block-diffusion section */
+        tr.block-diffusion-row td {
           border-top: 2px solid #000; /* Bold border */
           border-bottom: none;
         }
@@ -514,11 +514,11 @@
         tr.grouped-models td {
           border-bottom: none;
         }
-        /* Light bottom border specifically for the last row in block-autoregressive */
+        /* Light bottom border specifically for the last row in block-diffusion */
         tr.final-row td {
           border-bottom: 2px solid #000; /* Light border */
         }
-        /* Make BAM-DLMs invisible */
+        /* Make BD3-LMs invisible */
         .invisible {
           visibility: hidden; /* Makes text invisible but preserves space */
         }
@@ -564,22 +564,22 @@
                 <td>≤ 22.98</td>
             </tr>
             <tr>
-                <td><strong>BAM-DLMs</strong> L' = 16</td>
+                <td><strong>BD3-LMs</strong> L' = 16</td>
                 <td>≤ 22.27</td>
             </tr>
             <tr>
-                <td><span class="invisible">BAM-DLMs</span> L' = 8</td>
+                <td><span class="invisible">BD3-LMs</span> L' = 8</td>
                 <td>≤ 21.68</td>
             </tr>
             <tr>
-                <td><span class="invisible">BAM-DLMs</span> L' = 4</td>
+                <td><span class="invisible">BD3-LMs</span> L' = 4</td>
                 <td><strong>≤ 20.73</strong></td>
             </tr>
         </tbody>
     </table>
     
       <h4 class="subtitle">Arbitrary-length sequence generation</h4>
-      <p>One key drawback of many existing diffusion language models is that they cannot generate full-length documents that are longer than the length of the output context chosen at training time. For example, OpenWebText contains documents up to 131K tokens, whereas discrete diffusion model SEDD (<a href="https://arxiv.org/abs/2310.16834">Lou et. al</a>) is restricted to generate 1024 tokens. Below, we show that BAM-DLMs can generate variable-length documents by decoding an arbitrary number of blocks.</p>
+      <p>One key drawback of many existing diffusion language models is that they cannot generate full-length documents that are longer than the length of the output context chosen at training time. For example, OpenWebText contains documents up to 131K tokens, whereas discrete diffusion model SEDD (<a href="https://arxiv.org/abs/2310.16834">Lou et. al</a>) is restricted to generate 1024 tokens. Below, we show that BD3-LMs can generate variable-length documents by decoding an arbitrary number of blocks.</p>
       
       <table class="compact-table">
         <div class="figure-caption">
@@ -619,12 +619,12 @@
       </table>
       
       
-      <p> We assess the sample quality of BAM-DLMs on variable-length sequences. In the below table, we measure the generative perplexity of sampled sequences of lengths L=1024,2048 tokens under GPT2-Large. For MDLM, we use their block-autoregressive decoding technique (which does not feature block-autoregressive training as in BAM-DLMs) for L=2048. We also compare to SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>) an alternative semi-autoregressive formulation that performs Gaussian diffusion over word embeddings. Unlike SSD-LM, BAM-DLMs support likelihood estimation and applies discrete noise.</p>
+      <p> We assess the sample quality of BD3-LMs on variable-length sequences. In the below table, we measure the generative perplexity of sampled sequences of lengths L=1024,2048 tokens under GPT2-Large. For MDLM, we use their block-wise decoding technique (which does not feature block diffusion training as in BD3-LMs) for L=2048. We also compare to SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>) an alternative semi-autoregressive formulation that performs Gaussian diffusion over word embeddings. Unlike SSD-LM, BD3-LMs support likelihood estimation and applies discrete noise.</p>
 
-      <p>BAM-DLMs achieve the best generative perplexities compared to all previous diffusion methods. Compared to SSD-LM, our discrete approach yields samples with improved generative perplexity using an order of magnitude fewer generation steps.</p>
+      <p>BD3-LMs achieve the best generative perplexities compared to all previous diffusion methods. Compared to SSD-LM, our discrete approach yields samples with improved generative perplexity using an order of magnitude fewer generation steps.</p>
 
 
-      <!-- <p>We also compare with SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>), an alternative block-autoregressive formulation that performs Gaussian diffusion over word embeddings, as in other works such as Diffusion-LM (<a href="https://arxiv.org/abs/2205.14217">Li et. al</a>). Our approach instead applies discrete noise and can be seen as the analogous extension of <a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>. Unlike BAM-DLMs, SSD-LM does not support likelihood estimation. Thus, to compare the models, we generated unconditionally sequences of lengths 1024 and 2048. Our discrete approach yields samples with improved generative perplexity using an order magnitude fewer generation steps.</p> -->
+      <!-- <p>We also compare with SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>), an alternative block-autoregressive formulation that performs Gaussian diffusion over word embeddings, as in other works such as Diffusion-LM (<a href="https://arxiv.org/abs/2205.14217">Li et. al</a>). Our approach instead applies discrete noise and can be seen as the analogous extension of <a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>. Unlike BD3-LMs, SSD-LM does not support likelihood estimation. Thus, to compare the models, we generated unconditionally sequences of lengths 1024 and 2048. Our discrete approach yields samples with improved generative perplexity using an order magnitude fewer generation steps.</p> -->
         
       <style>
         table {
@@ -697,9 +697,9 @@
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
         
-        <!-- Block-autoregressive Section -->
+        <!-- Block-diffusion Section -->
         <tr>
-          <td style="border-bottom: none; text-align: left; padding: 8px;" rowspan="5"><i>Block-autoregressive</i></td>
+          <td style="border-bottom: none; text-align: left; padding: 8px;" rowspan="5"><i>Block diffusion</i></td>
           <td style="border-bottom: none; padding: 8px;">SSD-LM L' = 25</td>
           <td style="border-bottom: none; padding: 8px;"><center>36.9</center></td>
           <td style="border-bottom: none; padding: 8px;"><center>40K</center></td>
@@ -714,7 +714,7 @@
           <td style="border-top: none; padding: 8px;"><center>2K</center></td>
         </tr>
         <tr>
-          <td style="border-top: 1px solid #000000; padding: 8px;border-bottom: none;"><strong>BAM-DLMs</strong> L' = 16</td>
+          <td style="border-top: 1px solid #000000; padding: 8px;border-bottom: none;"><strong>BD3-LMs</strong> L' = 16</td>
           <td style="padding: 8px;border-bottom: none;"><center>37.4</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>36.5</center></td>
