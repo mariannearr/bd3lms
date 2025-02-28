@@ -50,7 +50,7 @@
 
   <section class="hero">
     <div class="hero-body">
-      <div class="container">
+      <div class="container is-max-desktop-wide">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-2 publication-title">Block-Autoregressive Masked Diffusion Language Models for Improved Likelihoods & Flexible-Length Generation</h1>
@@ -109,7 +109,7 @@
                   <a href="https://huggingface.co/collections/kuleshov-group/bam-dlms-67be95f81b96b15fec50d53f" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
-                      <img src="static/images/hf.png" alt="Hugging Face" style="width: 30px; height: 25px; vertical-align: middle;">
+                      <img src="static/images/hf.png" alt="Hugging Face" style="width: 20px; height: 20px; vertical-align: middle;">
                     </span>
                     <span>HuggingFace</span>
                   </a>
@@ -217,6 +217,10 @@
           max-width: 50%; /* Increase the width */
           width: 50%;
       }
+      .container.is-max-desktop-wide {
+          max-width: 70%; /* Increase the width */
+          width: 70%;
+      }
       .section {
             padding-left: 5%;
             padding-right: 5%;
@@ -226,6 +230,7 @@
           flex-direction: column; /* Captions and figure container are in a vertical stack */
           align-items: center;
       }
+      
       .subtitle.has-text-centered {
           font-size: 1.3em; /* Increase font size */
       }
@@ -233,6 +238,7 @@
         p {
           font-size: 18px;
         }
+
 
       
 
@@ -271,6 +277,11 @@
           padding-bottom: 10px;
           font-size: 25px;
         }
+        /* centers the title, minimize width of container */
+        /* .publication-title {
+          text-align: center;
+          max-width: 100%;
+        } */
   .color-box {
       display: inline-block;
       width: 20px;
@@ -401,7 +412,7 @@
       <p>Below, we show that optimizing the noise schedule per block size reduces the variance of the loss estimator and achieves the best perplexities compared to alternative schedules.</p>
     </div>
 
-    <table style="width: 70%; margin: 20px auto; border-collapse: collapse; font-size: 19px; text-align: center;">
+    <table style="width: 80%; margin: 20px auto; border-collapse: collapse; font-size: 18px; text-align: center;">
       <div class="figure-caption">
         <center>
         <i style="font-size: 19px;">Effect of training under different noise schedules on perplexity (PPL  ↓) on LM1B. All models are finetuned for 50K steps and are evaluated under uniformly sampled mask rates. For our clipped schedules, we compare the optimized clipping rates for \( L'=4, 16 \).</i>
