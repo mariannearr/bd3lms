@@ -132,7 +132,8 @@
       <h2 class="subtitle has-text-centered">
         Autoregressive decoding: 
         <span style="color: green; font-weight: bold;">&#10004; High quality</span> 
-        <span style="color: green; font-weight: bold;">&#10004; Arbitrary lengths</span>
+        <span style="color: green; font-weight: bold;">&#10004; Arbitrary-length generation</span>
+        <span style="color: green; font-weight: bold;">&#10004; KV-caching</span>
         <span style="color: red; font-weight: bold;">&#10060; Not parallelizable</span> 
       </h2>
       <img src="static/images/text_ar.gif" style="padding-bottom: 60px;">
@@ -140,14 +141,16 @@
       <h2 class="subtitle has-text-centered">
         Diffusion decoding: 
         <span style="color: red; font-weight: bold;">&#10060; Lower quality</span> 
-        <span style="color: red; font-weight: bold;">&#10060; Fixed length</span> 
+        <span style="color: red; font-weight: bold;">&#10060; Fixed-length generation</span> 
+        <span style="color: red; font-weight: bold;">&#10060; No KV-caching</span> 
         <span style="color: green; font-weight: bold;">&#10004; Parallelizable</span> 
       </h2>
       <img src="static/images/text_mdlm.gif" style="padding-bottom: 60px;">
       <h2 class="subtitle has-text-centered" style="padding-top: 20px;">
         Block-autoregressive diffusion decoding: 
         <span style="color: green; font-weight: bold;">&#10004; High quality</span> 
-        <span style="color: green; font-weight: bold;">&#10004; Arbitrary lengths</span> 
+        <span style="color: green; font-weight: bold;">&#10004; Arbitrary-length generation</span> 
+        <span style="color: green; font-weight: bold;">&#10004; KV-caching</span>
         <span style="color: green; font-weight: bold;">&#10004; Parallelizable</span> 
       </h2>
       <img src="static/images/text_sar.gif" style="padding-bottom: 20px;">
