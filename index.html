@@ -227,7 +227,7 @@
           align-items: center;
       }
       .subtitle.has-text-centered {
-          font-size: 1.4em; /* Increase font size */
+          font-size: 1.3em; /* Increase font size */
       }
 
         p {
@@ -377,7 +377,7 @@
       <section class="hero is-small">
         <div class="hero-body">
         <img src="static/images/bs1.png" alt="mask" style="width:80%; padding-bottom: 10px;">
-        <div class="figure-caption">
+        <div class="figure-caption" style="padding-bottom: 10px;">
           <i>Training under the discrete diffusion ELBO suffers from high variance.</i>
       </div>
         </div>
@@ -471,6 +471,9 @@
       <h4 class="subtitle">Likelihood Evaluation</h4>
       <p>BAM-DLMs achieve state-of-the-art likelihoods among diffusion models. As shown below, BAM-DLMs interpolate between diffusion and autoregressive likelihoods by tuning the block length \( L' \). </p>
       <style>
+        img {
+          width: 80%;
+        }
         table {
           border-collapse: collapse;
           width: 100%;
