@@ -187,7 +187,7 @@
         Autoregressive models define a factorized distribution of the form:
       </p>
       <p>
-        \[ \log p_\theta(\mathbf{x}) = \sum_{i=1}^L \log p_\theta(\mathbf{x}^i \mid \mathbf{x}^{\lt i}) \]
+        \[ \log p_\theta(\mathbf{x}) = \sum_{i=1}^L \log p_\theta(x^i \mid \mathbf{x}^{\lt i}) \]
       </p>
       <p>However, the sequential dependencies between tokens require that AR sampling is restricted to \( L \) sampling steps, which may be slow for long sequences.</p>
       <p>Diffusion models overcome this limitation by modeling tokens independently, admitting parallel generation. Diffusion models instead fit a model to undo a forward corruption process \( q(\mathbf{x}_t | \mathbf{x}_{t-1}) = \text{Cat}(\mathbf{x_t} ; Q_t \mathbf{x}_{t-1} ) \) using transition matrices \( Q_t \). D3PM (<a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>) defines this as</p>
