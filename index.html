@@ -226,6 +226,7 @@
           flex-direction: column; /* Captions and figure container are in a vertical stack */
           align-items: center;
           text-align: center;
+          max-width:70% ;
       }
       .subtitle.has-text-centered {
           font-size: 1.5em; /* Increase font size */
@@ -333,7 +334,7 @@
                 <div class="figure-content-container">
                     <div class="figure-container">
                         <!-- Figure/Image -->
-                        <img src="static/images/mask.png" alt="mask" style="width: 400px;">
+                        <img src="static/images/mask.png" alt="mask" style="width: 350px;">
                     </div>
                     <div class="captions">
                         <!-- Labels/Captions to the right of the figure -->
@@ -368,7 +369,7 @@
       <p>Our BAR parameterization is equivalent in expectation to the autoregressive NLL in the limiting case where \( L'=1 \). Surprisingly, we find a two point perplexity gap between our BAR model for \( L'=1 \) and AR when training both models on the LM1B dataset. We identify high training variance of the diffusion objective as responsible for the perplexity gap.</p>
       <section class="hero is-small">
         <div class="hero-body">
-        <img src="static/images/bs1.png" alt="mask" style="width:70%">
+        <img src="static/images/bs1.png" alt="mask" style="width:80%">
         <div class="figure-caption">
           <i>Training under the discrete diffusion ELBO suffers from high variance.</i>
       </div>
