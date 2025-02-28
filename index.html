@@ -50,7 +50,7 @@
 
   <section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop">
+      <div class="container">
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">Block-Autoregressive Masked Diffusion Language Models for Improved Likelihoods & Flexible-Length Generation</h1>
@@ -127,7 +127,7 @@
 
 <!-- Teaser video-->
 <section class="hero teaser">
-  <div class="container is-max-desktop">
+  <div class="container">
     <div class="hero-body">
       <h2 class="subtitle has-text-centered">
         Autoregressive decoding: 
@@ -160,7 +160,7 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
+      <div class="column is-five-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
@@ -198,13 +198,47 @@
 
 <!-- BAM-DLMs -->
 <style>
-      
-     
+      .link-block {
+          display: inline-block;
+          text-align: center;
+          margin: 4px;
+          font-size: 1.1em;
+        }
+
+        .link-block .external-link.button {
+          font-size: 0.9em;
+        }
+
+        .link-block .icon {
+          font-size: 1.2em;
+        }
+
+      .container.is-max-desktop {
+          max-width: 44%; /* Increase the width */
+          width: 44%;
+      }
+      body {
+        font-size: 22px; /* Adjust to your preferred size */
+      }
+      p {
+        font-size: 22px; /* Adjust to your preferred size */
+      }
+      .section {
+            padding-left: 5%;
+            padding-right: 5%;
+        }
         .hero-body {
           display: flex;
           flex-direction: column; /* Captions and figure container are in a vertical stack */
           align-items: center;
+          text-align: center;
+          max-width: 100%; /* Makes hero-body take the full width */
+          width: 100%;
       }
+      .subtitle.has-text-centered {
+          font-size: 1.5em; /* Increase font size */
+      }
+
       
 
         .figure-caption-container {
