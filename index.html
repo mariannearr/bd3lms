@@ -650,7 +650,7 @@
     <table style="border-collapse: collapse; width: 100%;">
       <div class="figure-caption">
         <center>
-          <i>Generative perplexity (Gen. PPL; ↓) of 50 variable-length samples. All models are trained on OWT with a context length L = 1024 and use nucleus sampling.</i>
+          <i>Generative perplexity (Gen. PPL; ↓) of 300 variable-length samples. All models are trained on OWT with a context length L = 1024 and use nucleus sampling.</i>
         </center>
       </div>
       <thead>
@@ -674,9 +674,9 @@
         <tr>
           <td style="border-bottom: 2px solid black; text-align: left; padding: 8px;"><i>Autoregressive</i></td>
           <td style="border-bottom: 2px solid black; padding: 8px;">AR</td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>14.5</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>14.1</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>13.1</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>12.8</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
     
@@ -684,16 +684,16 @@
         <tr>
           <td style="border-bottom: 2px solid black; text-align: left; padding: 8px;" rowspan="2"><i>Diffusion</i></td>
           <td style="padding: 8px;">SEDD</td>
-          <td style="padding: 8px;"><center>53.2</center></td>
+          <td style="padding: 8px;"><center>52.6</center></td>
           <td style="padding: 8px;"><center>1K</center></td>
           <td style="padding: 8px;"><center>-</center></td>
           <td style="padding: 8px;"><center>-</center></td>
         </tr>
         <tr>
           <td style="border-bottom: 2px solid black; padding: 8px;">MDLM</td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>46.3</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>47.0</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>38.1</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>41.7</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
         
@@ -701,37 +701,37 @@
         <tr>
           <td style="border-bottom: none; text-align: left; padding: 8px;" rowspan="5"><i>Block diffusion</i></td>
           <td style="border-bottom: none; padding: 8px;">SSD-LM L' = 25</td>
-          <td style="border-bottom: none; padding: 8px;"><center>36.9</center></td>
+          <td style="border-bottom: none; padding: 8px;"><center>37.2</center></td>
           <td style="border-bottom: none; padding: 8px;"><center>40K</center></td>
-          <td style="border-bottom: none; padding: 8px;"><center>35.2</center></td>
+          <td style="border-bottom: none; padding: 8px;"><center>35.3</center></td>
           <td style="border-bottom: none; padding: 8px;"><center>80K</center></td>
         </tr>
         <tr>
           <td style="padding: 8px;"></td>
-          <td style="border-top: none; padding: 8px;"><center>325.8</center></td>
+          <td style="border-top: none; padding: 8px;"><center>281.3</center></td>
           <td style="border-top: none; padding: 8px;"><center>1K</center></td>
-          <td style="border-top: none; padding: 8px;"><center>278.1</center></td>
+          <td style="border-top: none; padding: 8px;"><center>261.9</center></td>
           <td style="border-top: none; padding: 8px;"><center>2K</center></td>
         </tr>
         <tr>
           <td style="border-top: 1px solid #000000; padding: 8px;border-bottom: none;"><strong>BD3-LMs</strong> L' = 16</td>
-          <td style="padding: 8px;border-bottom: none;"><center>37.4</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>37.8</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
-          <td style="padding: 8px;border-bottom: none;"><center>36.5</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>36.8</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
         </tr>
         <tr>
           <td style="padding: 8px;border-bottom: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L' = 8</td>
-          <td style="padding: 8px;border-bottom: none;"><center>34.9</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>36.4</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
-          <td style="padding: 8px;border-bottom: none;"><center>35.5</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>35.7</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
         </tr>
         <tr>
           <td style="padding: 8px;" class="highlight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L' = 4</td>
-          <td style="padding: 8px;" class="highlight"><center><strong>28.5</strong></center></td>
+          <td style="padding: 8px;" class="highlight"><center><strong>30.5</strong></center></td>
           <td style="padding: 8px;"><center>1K</center></td>
-          <td style="padding: 8px;" class="highlight"><center><strong>27.9</strong></center></td>
+          <td style="padding: 8px;" class="highlight"><center><strong>29.9</strong></center></td>
           <td style="padding: 8px;"><center>2K</center></td>
         </tr>
         
