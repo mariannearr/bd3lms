@@ -147,13 +147,19 @@
       </h2>
       <img src="static/images/text_mdlm.gif" style="padding-bottom: 60px;">
       <h2 class="subtitle has-text-centered" style="padding-top: 20px;">
-        <strong>Block diffusion (Ours)</strong>: 
+        <strong>Previous Diffusion LMs</strong>: 
+        <span style="color: red; padding-left: 10px;">&#10060; Lower quality</span> 
+        <span style="color: red; padding-left: 10px;">&#10060; Fixed-length</span> 
+        <span style="color: red; padding-left: 10px;">&#10060; No KV caching</span> 
+        <span style="color: green; padding-left: 10px;">&#9989; Parallelizable</span> 
+        <br><br>
+        <strong>Block Diffusion LMs</strong>: 
         <span style="color: green; padding-left: 10px;">&#9989; High quality</span> 
         <span style="color: green; padding-left: 10px;">&#9989; Arbitrary-length</span> 
         <span style="color: green; padding-left: 10px;">&#9989; KV caching</span>
         <span style="color: green; padding-left: 10px;">&#9989; Parallelizable</span> 
       </h2>
-      <img src="static/images/text_sar.gif" style="padding-bottom: 20px;">
+      <img src="static/images/text_sar copy.gif" style="padding-bottom: 20px; width:80%;">
       </div>
   </div>
 </section>
@@ -602,7 +608,7 @@
           </tr>
           <tr>
             <td>AR</td>
-            <td>6719</td>
+            <td>4408</td>
             <td>131K</td>
           </tr>
           <tr>
@@ -612,8 +618,8 @@
           </tr>
           <tr>
             <td><strong>BD3-LM</strong> L'=16</td>
-            <td>805</td>
-            <td>9080</td>
+            <td>798</td>
+            <td>9982</td>
           </tr>
         </tbody>
       </table>
@@ -676,7 +682,7 @@
           <td style="border-bottom: 2px solid black; padding: 8px;">AR</td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>14.1</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>12.8</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>13.2</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
     
@@ -684,16 +690,16 @@
         <tr>
           <td style="border-bottom: 2px solid black; text-align: left; padding: 8px;" rowspan="2"><i>Diffusion</i></td>
           <td style="padding: 8px;">SEDD</td>
-          <td style="padding: 8px;"><center>52.6</center></td>
+          <td style="padding: 8px;"><center>52.0</center></td>
           <td style="padding: 8px;"><center>1K</center></td>
           <td style="padding: 8px;"><center>-</center></td>
           <td style="padding: 8px;"><center>-</center></td>
         </tr>
         <tr>
           <td style="border-bottom: 2px solid black; padding: 8px;">MDLM</td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>47.0</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>46.8</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>1K</center></td>
-          <td style="border-bottom: 2px solid black; padding: 8px;"><center>41.7</center></td>
+          <td style="border-bottom: 2px solid black; padding: 8px;"><center>41.3</center></td>
           <td style="border-bottom: 2px solid black; padding: 8px;"><center>2K</center></td>
         </tr>
         
@@ -715,23 +721,23 @@
         </tr>
         <tr>
           <td style="border-top: 1px solid #000000; padding: 8px;border-bottom: none;"><strong>BD3-LMs</strong> L' = 16</td>
-          <td style="padding: 8px;border-bottom: none;"><center>37.8</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>33.4</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
-          <td style="padding: 8px;border-bottom: none;"><center>36.8</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>31.5</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
         </tr>
         <tr>
           <td style="padding: 8px;border-bottom: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L' = 8</td>
-          <td style="padding: 8px;border-bottom: none;"><center>36.4</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>30.4</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>1K</center></td>
-          <td style="padding: 8px;border-bottom: none;"><center>35.7</center></td>
+          <td style="padding: 8px;border-bottom: none;"><center>28.2</center></td>
           <td style="padding: 8px;border-bottom: none;"><center>2K</center></td>
         </tr>
         <tr>
           <td style="padding: 8px;" class="highlight">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;L' = 4</td>
-          <td style="padding: 8px;" class="highlight"><center><strong>30.5</strong></center></td>
+          <td style="padding: 8px;" class="highlight"><center><strong>25.7</strong></center></td>
           <td style="padding: 8px;"><center>1K</center></td>
-          <td style="padding: 8px;" class="highlight"><center><strong>29.9</strong></center></td>
+          <td style="padding: 8px;" class="highlight"><center><strong>23.6</strong></center></td>
           <td style="padding: 8px;"><center>2K</center></td>
         </tr>
         
