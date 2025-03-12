@@ -59,9 +59,9 @@
               <span class="author-block">
                 <a href="https://mariannearriola.github.io/" target="_blank">Marianne Arriola</a><sup>1</sup>,</span>
                 <span class="author-block">
-                  <a href="https://s-sahoo.com/" target="_blank">Subham Sahoo</a><sup>1</sup>,</span>
+                  <a href="https://skylion007.github.io/" target="_blank">Aaron Gokaslan</a><sup>1</sup>,</span>
                   <span class="author-block">
-                    <a href="https://skylion007.github.io/" target="_blank">Aaron Gokaslan</a><sup>1</sup>,</span>
+                    <a href="https://justinchiu.netlify.app/" target="_blank">Justin Chiu</a><sup>2</sup>,</span>
                       <span class="author-block">
                         <a href="https://zhihanyang2022.github.io/" target="_blank">Zhihan Yang</a><sup>1</sup>,</span>
                         <span class="author-block">
@@ -69,7 +69,7 @@
                           <span class="author-block">
                             <a href="https://hanjq17.github.io/" target="_blank">Jiaqi Han</a><sup>3</sup>,</span>
                             <span class="author-block">
-                              <a href="https://justinchiu.netlify.app/" target="_blank">Justin Chiu</a><sup>2</sup>,</span>
+                              <a href="https://s-sahoo.com/" target="_blank">Subham Sahoo</a><sup>1</sup>,</span>
                   <span class="author-block">
                     <a href="https://www.cs.cornell.edu/~kuleshov/" target="_blank">Volodymyr Kuleshov</a><sup>1</sup>
                   </span>
@@ -136,7 +136,7 @@
         <span style="color: green; padding-left: 10px;">&#9989; KV caching</span>
         <span style="color: red; padding-left: 10px;">&#10060; Not parallelizable</span> 
       </h2>
-      <img src="static/images/text_ar.gif" style="padding-bottom: 60px;">
+      <img src="static/images/ar.gif" style="padding-bottom: 60px;">
 
       <h2 class="subtitle has-text-centered">
         <strong>Diffusion</strong>: 
@@ -145,7 +145,7 @@
         <span style="color: red; padding-left: 10px;">&#10060; No KV caching</span> 
         <span style="color: green; padding-left: 10px;">&#9989; Parallelizable</span> 
       </h2>
-      <img src="static/images/text_mdlm.gif" style="padding-bottom: 60px;">
+      <img src="static/images/mdlm.gif" style="padding-bottom: 60px;">
       <h2 class="subtitle has-text-centered" style="padding-top: 20px;">
         <!-- <strong>Previous Diffusion LMs</strong>: 
         <span style="color: red; padding-left: 10px;">&#10060; Lower quality</span> 
@@ -159,7 +159,7 @@
         <span style="color: green; padding-left: 10px;">&#9989; KV caching</span>
         <span style="color: green; padding-left: 10px;">&#9989; Parallelizable</span> 
       </h2>
-      <img src="static/images/text_sar.gif" style="padding-bottom: 20px; width:80%;">
+      <img src="static/images/bd3.gif" style="padding-bottom: 20px; width:80%;">
       </div>
   </div>
 </section>
@@ -173,7 +173,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Diffusion language models offer unique benefits over autoregressive (AR) models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block diffusion (BD) diffusion models that interpolate between discrete denoising diffusion and autoregressive models. We propose a recipe for building effective block diffusion models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. Block diffusion overcomes key limitations of diffusion language models, setting a new state-of-the-art performance on language modeling benchmarks and enabling generation of arbitrary-length sequences.
+            Diffusion language models offer unique benefits over autoregressive models due to their potential for parallelized generation and controllability, yet they lag in likelihood modeling and are limited to fixed-length generation. In this work, we introduce a class of block diffusion language models that interpolate between discrete denoising diffusion and autoregressive models. Block diffusion overcomes key limitations of both approaches by supporting flexible-length generation and improving inference efficiency with KV caching and parallel token sampling. We propose a recipe for building effective block diffusion models that includes an efficient training algorithm, estimators of gradient variance, and data-driven noise schedules to minimize the variance. Block diffusion sets a new state-of-the-art performance among diffusion models on language modeling benchmarks and enables generation of arbitrary-length sequences.
           </p>
         </div>
       </div>
@@ -188,19 +188,19 @@
     <div class="content is-medium">
       <h2 class="title">Autoregressive vs. Diffusion Language Models</h2>
       <p>
-        In the language modeling task, we have a sequence of \( L \) tokens \( \mathbf{x} = (x^1, \dots, x^L ) \) drawn from the data distribution \( q(\mathbf{x}) \). We aim to fit a model \( p_\theta(\mathbf{x}) \) of \( q \).
+        In the language modeling task, we have a sequence of \( L \) tokens \( \mathbf{x} = (\mathbf{x}^1, \dots, \mathbf{x}^L ) \) drawn from the data distribution \( q(\mathbf{x}) \). We aim to fit a model \( p_\theta(\mathbf{x}) \) of \( q \).
       </p>
         Autoregressive models define a factorized distribution of the form:
       </p>
       <p>
-        \[ \log p_\theta(\mathbf{x}) = \sum_{i=1}^L \log p_\theta(x^i \mid \mathbf{x}^{\lt i}) \]
+        \[ \log p_\theta(\mathbf{x}) = \sum_{\ell=1}^L \log p_\theta(\mathbf{x}^\ell \mid \mathbf{x}^{\lt \ell}) \]
       </p>
       <p>However, the sequential dependencies between tokens require that AR sampling is restricted to \( L \) sampling steps, which may be slow for long sequences.</p>
       <p>Diffusion models overcome this limitation by modeling tokens independently, admitting parallel generation. Diffusion models instead fit a model to undo a forward corruption process \( q(\mathbf{x}_t | \mathbf{x}_{t-1}) = \text{Cat}(\mathbf{x_t} ; Q_t \mathbf{x}_{t-1} ) \) using transition matrices \( Q_t \). D3PM (<a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>) defines this as</p>
       <p>
-        \[ p_\theta(\mathbf{x}_s | \mathbf{x}_t) = \sum_{\mathbf{x}} q(\mathbf{x}_s | \mathbf{x}_t, \mathbf{x}) p_\theta(\mathbf{x} | \mathbf{x}_t)   \]
+        \[ p_\theta(\mathbf{x}_s | \mathbf{x}_t) = \prod_{\ell=1}^L p_\theta (\mathbf{x}_s^\ell | \mathbf{x}_t) = \sum_{\mathbf{x}} \left[q(\mathbf{x}_s^{\ell} | \mathbf{x}_t^\ell, \mathbf{x}^\ell) p_\theta(\mathbf{x}^{\ell} | \mathbf{x}_t)  \right] \]
       </p>
-      <p>where the denoising base model \( p_\theta(\mathbf{x} | \mathbf{x}_t) \) predicts clean tokens \( \mathbf{x} \) given noised tokens \( \mathbf{x}_t \). However, the diffusion objective minimizes a bound on the likelihood. As a result, diffusion models lag in terms of likelihood and sample quality. Furthermore, diffusion models are restricted to generate fixed length sequences.</p>
+      <p>where the denoising base model \( p_\theta(\mathbf{x}^\ell | \mathbf{x}_t) \) predicts clean token \( \mathbf{x}^\ell \) given noised tokens \( \mathbf{x}_t \). However, the diffusion objective minimizes a bound on the likelihood. As a result, diffusion models lag in terms of likelihood and sample quality. Furthermore, diffusion models are restricted to generate fixed length sequences.</p>
     </div>
   </div>
 </section>
@@ -338,55 +338,30 @@
     <div class="content is-medium">
       <h2 class="title">BD3-LMs: Block Discrete Denoising Diffusion Language Models</h2>
       <p>We combine modeling paradigms to enjoy better likelihoods & flexible-length generation from autoregressive models, as well as fast & parallel generation from diffusion models.</p> 
-      <h4 class="subtitle">Block diffusion likelihood</h4>
+      <h4 class="subtitle">Block Diffusion Likelihood</h4>
       <p>We propose a modeling framework that autoregressively models blocks of tokens and performs diffusion within each block. Our likelihood factorizes over \( B \) blocks of length \( L' \) as</p>
       <p>
         \[ \log p_\theta (\mathbf{x}) = \sum_{b=1}^B \log p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \]
       </p>
       <p>Each \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) is modeled using discrete diffusion ELBO over a block of \( L' \) tokens. We obtain a principled learning objective \( \mathcal{L}_\text{BD}(\mathbf{x}, \theta) \) by optimizing the following likelihood bound:</p>
       <p>
-        \[ \log p_\theta(\mathbf{x}) \geq \mathcal{L}_\text{BD}(\mathbf{x}, \theta) := \sum_{b=1}^{B} \mathcal{L}(\mathbf{x}^b, \mathbf{x}^{\lt b}, \theta), \]
+        \[ \log p_\theta(\mathbf{x}) \geq \mathcal{L}_\text{BD}(\mathbf{x}, \theta) := \sum_{b=1}^{B} \mathcal{L}_{\text{diffusion}}(\mathbf{x}^b, \mathbf{x}^{\lt b}, \theta), \]
       </p>
       We model the per-block likelihood under a simple discrete diffusion parameterization (<a href="https://arxiv.org/abs/2406.07524">Sahoo et. al</a>, <a href="https://arxiv.org/abs/2406.04329">Shi et. al</a>, <a href="https://arxiv.org/abs/2406.03736">Ou et. al</a>). Our final objective becomes a sum of weighted cross-entropy terms:
       <p>
-        \[ \mathcal{L}_\text{BD}(\mathbf{x}, \theta) :=  \sum_{b=1}^{B} \mathbb{E}_{t_b \sim (0, 1]} \mathbb{E}_{q} \frac{1}{t_b} \log p_\theta(\mathbf{x}^b | \mathbf{x}_{t_b}^b, \mathbf{x}^{\lt b}) \]
+        \[ \mathcal{L}_\text{BD}(\mathbf{x}, \theta) :=  - \sum_{b=1}^{B} \mathbb{E}_{t \sim [0, 1]} \mathbb{E}_{q} \frac{1}{t} \log p_\theta(\mathbf{x}^b | \mathbf{x}_{t}^b, \mathbf{x}^{\lt b}) \]
       </p>
-      <h4 class="subtitle">Efficient training using a custom attention algorithm</h4>
-      <p> Ideally, we wish to model all conditional terms \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) for \( B \) blocks in one forward pass of the model \( \mathbf{x}_\theta \). However, observe that denoising \( \mathbf{x}_t^b \) requires a forward pass on this noisy input, while denoising the next block requires running the model \( \mathbf{x}_\theta \) on the clean version \( \mathbf{x}^b \).</p>
-      <p>We propose to efficiently model all \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) in a vectorized fashion by proposing a custom attention mask. This mask ensures that each conditional term is modeled using a special attention pattern, where each token in \( \mathbf{x}^b \) self-attends to the noised block and cross-attends to the clean context \( \mathbf{x}^{\lt b} \). We update \( \mathbf{x}^{\lt b} \) needed for this cross-attention using block-causal attention. </p>
+      <h4 class="subtitle">Efficient Training & Sampling Algorithms</h4>
+      <p> Naively, we would compute the logits by applying \( \mathbf{x}_\theta^b( \mathbf{x}_t^b, \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1}) \) in a loop \( B\) times. Instead, we only require two forward passes. The first pass precomputes keys and values \( \mathbf{K}^{1:B}, \mathbf{V}^{1:B} \) for the full sequence \( \mathbf{x}\). In the second forward pass, we compute denoised predictions for all blocks simulatenously using  \( \mathbf{x}_\theta^b( \mathbf{x}_t^b, \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1}) \). </p>
+      <p> To sample from BD3-LMs, we generate one block at a time, conditioned on previously sampled blocks. After generating a block, we cache its keys and values, similar to AR. We may use any diffusion sampling procedure \( \text{SAMPLE} ( \mathbf{x}_\theta^b, \mathbf{K}^{1:b\text{-}1}, \mathbf{V}^{1:b\text{-}1}) \) to sample from the conditional distribution \( p_\theta (\mathbf{x}_s^b | \mathbf{x}_t^b, \mathbf{x}^{ < b}) \) over \( T\) sampling steps per block.</p>
       <section class="hero is-small">
-        <div class="hero-body has-text-centered">
-            <div class="figure-caption-container">
-                <!-- Figure Caption Above the Figure and Color-Coded Labels -->
-                <!-- Container for figure and color-coded captions next to each other -->
-                <div class="figure-caption">
-                  <i>Custom attention mask to model \( p_\theta (\mathbf{x}^b | \mathbf{x}^{\lt b}) \) for \( B \) blocks in one forward pass.</i>
-              </div>
-                <div class="figure-content-container">
-                    <div class="figure-container">
-                        <!-- Figure/Image -->
-                        <img src="static/images/mask.png" alt="mask" style="width: 300px;">
-                    </div>
-                    <div class="captions">
-                        <!-- Labels/Captions to the right of the figure -->
-                        <div class="caption">
-                            <div class="color-box orange"></div>
-                            <span>Self-attention within noised blocks \( \mathbf{x}_t^b \)</span>
-                        </div>
-                        <div class="caption">
-                            <div class="color-box blue"></div>
-                            <span>Cross-attention for conditional context \( \mathbf{x}^{\lt b} \)</span>
-                        </div>
-                        <div class="caption">
-                            <div class="color-box dark-green"></div>
-                            <span>Block-causal attention to update \( \mathbf{x} \)</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="hero-body">
+        <img src="static/images/alg.png" alt="mask" style="width:80%; padding-bottom: 10px;">
+        <div class="figure-caption" style="padding-bottom: 10px;">
+          <i>BD3-LM training and sampling algorithms.</i>
+      </div>
         </div>
-    </section>
+      </section>
     </div>
   </div>
 </section>
@@ -417,7 +392,7 @@
 <section class="section" id="SEC2">
   <div class="container is-max-desktop content">
     <div class="content is-medium">
-      <h2 class="title">Data-Driven Clipped Schedules for Low-Variance Gradients</h2>
+      <h2 class="title">Data-Driven Noise Schedules for Low-Variance Training</h2>
       <p>To avoid masking rates that cause high-variance training, we train BD3-LMs under "clipped" masking rates \( t \sim \mathcal{U}[\beta, \omega] \) for \( 0 \leq \beta, \omega \leq 1 \). By reducing the training variance, we improve likelihoods when we evaluate under uniformly sampled mask rates.</p>
 
       <p>As the optimal mask rates may differ depending on the block size \(L'\), we adaptively learn \( \beta, \omega \) during training. In practice, we do so using a grid search during every validation step, after 5K gradient updates, to optimize \(\min_{\beta, \omega} \text{Var}_{\mathbf{X}, t} \left[ \mathcal{L}_{\text{BD}}(\theta, \beta, \omega; \mathbf{X}) \right] \). </p>
@@ -583,11 +558,11 @@
             </tr>
         </tbody>
     </table>
-    
-      <h4 class="subtitle">Arbitrary-length sequence generation</h4>
+
+      <h4 class="subtitle" style="margin-top: 40px;">Arbitrary-length sequence generation</h4>
       <p>One key drawback of many existing diffusion language models is that they cannot generate full-length documents that are longer than the length of the output context chosen at training time. For example, OpenWebText contains documents up to 131K tokens, whereas discrete diffusion model SEDD (<a href="https://arxiv.org/abs/2310.16834">Lou et. al</a>) is restricted to generate 1024 tokens. Below, we show that BD3-LMs can generate variable-length documents by decoding an arbitrary number of blocks.</p>
       
-      <table class="compact-table">
+      <table class="compact-table" style="margin-bottom: 40px;">
         <div class="figure-caption">
         <center>
           <i>Generation length statistics from sampling 500 documents from models trained on OWT. For diffusion models, we use T=1K diffusion steps.</i>
@@ -608,7 +583,7 @@
           </tr>
           <tr>
             <td>AR</td>
-            <td>4408</td>
+            <td>4008</td>
             <td>131K</td>
           </tr>
           <tr>
@@ -625,9 +600,7 @@
       </table>
       
       
-      <p> We assess the sample quality of BD3-LMs on variable-length sequences. In the below table, we measure the generative perplexity of sampled sequences of lengths L=1024,2048 tokens under GPT2-Large. For MDLM, we use their block-wise decoding technique (which does not feature block diffusion training as in BD3-LMs) for L=2048. We also compare to SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>) an alternative semi-autoregressive formulation that performs Gaussian diffusion over word embeddings. Unlike SSD-LM, BD3-LMs support likelihood estimation and applies discrete noise.</p>
-
-      <p>BD3-LMs achieve the best generative perplexities compared to all previous diffusion methods. Compared to SSD-LM, our discrete approach yields samples with improved generative perplexity using an order of magnitude fewer generation steps.</p>
+      <p> We assess the generation quality of BD3-LMs on variable-length sequences, comparing all methods using the same number of generation steps (NFEs). Below, we measure the generative perplexity of sampled sequences under GPT2-Large. BD3-LMs achieve the best generative perplexities compared to all previous diffusion methods.</p>
 
 
       <!-- <p>We also compare with SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>), an alternative block-autoregressive formulation that performs Gaussian diffusion over word embeddings, as in other works such as Diffusion-LM (<a href="https://arxiv.org/abs/2205.14217">Li et. al</a>). Our approach instead applies discrete noise and can be seen as the analogous extension of <a href="https://arxiv.org/abs/2107.03006">Austin et. al</a>. Unlike BD3-LMs, SSD-LM does not support likelihood estimation. Thus, to compare the models, we generated unconditionally sequences of lengths 1024 and 2048. Our discrete approach yields samples with improved generative perplexity using an order magnitude fewer generation steps.</p> -->
@@ -653,10 +626,10 @@
             margin-bottom: 10px;
         }
     </style>
-    <table style="border-collapse: collapse; width: 100%;">
+    <table style="border-collapse: collapse; width: 100%; margin-bottom:40px;">
       <div class="figure-caption">
         <center>
-          <i>Generative perplexity (Gen. PPL; ↓) of 300 variable-length samples. All models are trained on OWT with a context length L = 1024 and use nucleus sampling.</i>
+          <i>Generative perplexity (Gen. PPL; ↓) and number of function evaluations (NFEs; ↓) of 300 variable-length samples. All models are trained on OWT with a context length L = 1024 and use nucleus sampling.</i>
         </center>
       </div>
       <thead>
@@ -743,9 +716,19 @@
         
       </tbody>
     </table>
-    
-    
-    
+    <p>For MDLM, we use their block-wise decoding technique (which does not feature block diffusion training as in BD3-LMs) for L=2048. We also compare to SSD-LM (<a href="https://arxiv.org/abs/2210.17432">Han et. al</a>) an alternative block-autoregressive method (also known as semi-autoregression) that performs Gaussian diffusion over word embeddings but cannot perform likelihood estimation. Our discrete approach yields samples with improved generative perplexity using an order of magnitude fewer generation steps.</p>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONCLUSION -->
+<section class="section" id="SEC2">
+  <div class="container is-max-desktop content">
+    <div class="content is-medium">
+      <h2 class="title">Conclusion</h2>
+      <p>We presented Block Discrete Diffusion Language models, a new model class that combines strength of both autoregressive and diffusion approaches while overcoming their limitations. Block diffusion overcomes key drawbacks of existing discrete diffusion models: the quality gap to AR model and their inability to generate arbitrary-length sequences or support KV caching. By doing so, BD3-LMs set a new state-of-the-art among discrete diffusion models. Our work presents a promising step forward in building powerful diffusion language models that are competitive with standard LLMs, while offering parallel token generation and improved controllability of samples.</p>
     </div>
   </div>
 </section>
